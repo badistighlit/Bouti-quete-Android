@@ -1,6 +1,8 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -19,5 +21,11 @@ class MainActivity : AppCompatActivity() {
             .load(R.drawable.logo)
             .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.DATA)) // Cache l'image en mémoire
             .into(imageView)
+        val buttonListeMagasin = findViewById<Button>(R.id.buttonListeMagasins)
+        buttonListeMagasin.setOnClickListener{
+        val intent = Intent(this, ListeMagasin::class.java)
+        startActivity(intent)}
     }
+
+
 }
