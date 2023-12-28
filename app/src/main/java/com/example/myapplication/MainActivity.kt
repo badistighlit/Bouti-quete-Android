@@ -22,13 +22,16 @@ class MainActivity : AppCompatActivity() {
             .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.DATA)) // Cache l'image en mémoire
             .into(imageView)
         val buttonListeMagasin = findViewById<Button>(R.id.buttonListeMagasins)
-        buttonListeMagasin.setOnClickListener{
-        val intent = Intent(this, ListeMagasin::class.java)
-        startActivity(intent)}
-        val intent = Intent(this, RenseigneAdresseActivity::class.java)
-        startActivity(intent)
+        buttonListeMagasin.setOnClickListener {
+            val intent = Intent(this, ListeMagasin::class.java)
+            startActivity(intent)
+        }
+        val btnRenseigneAdresse = findViewById<Button>(R.id.btnRenseigneAdresse)
+        btnRenseigneAdresse.setOnClickListener {
+            val intent = Intent(this, RenseigneAdresseActivity::class.java)
+            startActivity(intent)
+
+        }
 
     }
-
-
 }
