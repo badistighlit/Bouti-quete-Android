@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -22,12 +23,12 @@ class RenseigneAdresseActivity : AppCompatActivity() {
             val adresse = adresseEditText.text.toString()
 
             // Badis récupe les données ici, modifie le nom de la classe
-            /*val intent = Intent(this, ActiviteDeBadis::class.java).apply {
+            val intent = Intent(this, ListeMagasinProche::class.java).apply {
                 putExtra("NOM", nom)
                 putExtra("PRENOM", prenom)
                 putExtra("ADRESSE", adresse)
             }
-            startActivity(intent)*/
+            startActivity(intent)
         }
 
     }
