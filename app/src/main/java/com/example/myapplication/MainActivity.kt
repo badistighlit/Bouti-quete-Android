@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         buttonListeMagasin.setOnClickListener{
         val intent = Intent(this, ListeMagasin::class.java)
         startActivity(intent)}
+        val intent = Intent(this, RenseigneAdresseActivity::class.java)
+        startActivity(intent)
+
     }
 
 
