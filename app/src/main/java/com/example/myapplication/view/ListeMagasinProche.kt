@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.model.magasin_model.Magasin
+import com.example.myapplication.view.adapters.MagasinAdapter
 
 class ListeMagasinProche : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

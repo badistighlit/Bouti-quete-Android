@@ -3,6 +3,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.model.magasin_model.Magasin
+import com.example.myapplication.view.adapters.MagasinAdapter
 
 class ListeMagasin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +38,3 @@ class ListeMagasin : AppCompatActivity() {
 }
 
 
-data class Magasin(
-    val id: Int,
-    val nom: String,
-    val adresse: String
-)
