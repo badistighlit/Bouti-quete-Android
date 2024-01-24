@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,27 +22,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/Profil"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="30dp"
-                android:checkable="false"
-                android:drawableBottom="@android:drawable/btn_star_big_on" />
+            android:orientation="horizontal"
+            android:gravity="end">
 
             <Switch
                 android:id="@+id/switch1"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:gravity="right"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
                 android:text="Language En"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
@@ -55,48 +55,43 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/SP"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnSearchProduct"
+                android:layout_width="228dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="150dp"
-                android:layout_weight="1"
-                android:text="Serch Product" />
+                android:layout_marginTop="16dp"
+                android:text="Je cherche un produit" />
 
             <Button
-                android:id="@+id/buttonListeMagasins"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnListeMagasins"
+                android:layout_width="219dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginTop="16dp"
                 android:onClick="openListeMagasin"
-                android:text="Liste magasin" />
+                android:text="Voir tout nos magasin" />
 
             <Button
-                android:id="@+id/SS"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnSearchStore"
+                android:layout_width="224dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="150dp"
-                android:layout_weight="1"
-                android:text="Search Store" />
-            <Button
-                android:id="@+id/btnRenseigneAdresse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Renseigner Adresse"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:text="Je cherche un magasin" />
 
         </LinearLayout>
-    </LinearLayout>
 
+        <Button
+            android:id="@+id/btnRenseigneAdresse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="Les magasins à coté de moi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

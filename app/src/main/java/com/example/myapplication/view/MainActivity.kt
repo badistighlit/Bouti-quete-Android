@@ -1,8 +1,15 @@
 package com.example.myapplication.view
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import com.example.myapplication.ListeMagasin
+import com.example.myapplication.ListeMagasinProche
 import com.example.myapplication.R
+import com.example.myapplication.RenseigneAdresseActivity
 import com.example.myapplication.repositories.LocalisationRepository
 import com.example.myapplication.repositories.RetrofitClient
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -19,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val address = "Alger" // Remplacez par l'adresse que vous souhaitez rechercher
-
+        val address = "01 RUE EMILE GILBERT 75012"
+/*
         localisationRepository.getLatLong(address)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -32,6 +39,31 @@ class MainActivity : AppCompatActivity() {
             }, { error ->
                 // Gérer les erreurs
                 Log.e(TAG, "Erreur lors de l'appel à l'API : ${error.message}")
-            })
+            })*/
+            val renseignedAdresse: Button = findViewById(R.id.btnRenseigneAdresse);
+            renseignedAdresse.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, RenseigneAdresseActivity::class.java)
+            startActivity(intent); })
+
+            val chercheMagasin: Button = findViewById(R.id.btnSearchStore);
+            chercheMagasin.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, ListeMagasinProche::class.java)
+            startActivity(intent); })
+
+            val nosMagasin: Button = findViewById(R.id.btnListeMagasins);
+           nosMagasin.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, ListeMagasin::class.java)
+            startActivity(intent); })
+
+
+            /*val chercheProduit: Button = findViewById(R.id.btnSearchProduct);
+             chercheProduit.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, ListeMagasin::class.java)
+            startActivity(intent); })*/
+
+
     }
 }
+
+
+
