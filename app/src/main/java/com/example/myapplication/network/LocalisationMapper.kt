@@ -1,8 +1,8 @@
 package com.example.myapplication.network
 
-import javax.inject.Inject
 
-class LocalisationMapper @Inject constructor() {
+
+class LocalisationMapper constructor() {
 
     fun mapping(entity: LocalisationResponseObject): LocalisationData {
         val location = entity.results.firstOrNull()?.geometry?.location
