@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface LocalisationApi {
 
-      @GET("geocode/json")
+    @GET("geocode/json")
     fun getLatLong(
         @Query("address") address: String,
         @Query("key") apiKey: String

@@ -30,7 +30,7 @@ class MagasinAdapter(private val magasins: List<Magasin>) :
 
         fun bind(magasin: Magasin) {
             nomTextView.text = magasin.nom
-            adresseTextView.text = magasin.adresse
+            adresseTextView.text = magasin.adresse.rue + ", " + magasin.adresse.ville + ", " + magasin.adresse.codePostal
         }
     }
 }

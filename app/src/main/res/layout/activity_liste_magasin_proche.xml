@@ -6,30 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ListeMagasinProche">
 
-    <TextView
-        android:id="@+id/Salutation"
-        android:layout_width="379dp"
-        android:layout_height="98dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ListerecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/Salutation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="284dp" />
+        <Button
+            android:id="@+id/backReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+
+        <TextView
+            android:id="@+id/Salutation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ListerecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

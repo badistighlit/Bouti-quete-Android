@@ -7,7 +7,6 @@ import com.example.myapplication.network.LocalisationMapper
 import com.example.myapplication.network.LocalisationResponseObject
 import com.example.myapplication.repositories.LocalisationRepository
 //import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 class LocalisationViewModel(private val repository: LocalisationRepository,private val mapper: LocalisationMapper)
     : ViewModel() {

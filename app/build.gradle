@@ -61,9 +61,6 @@ dependencies {
 
     implementation("androidx.core:core-splashscreen:1.0.1")
 
-
-
-
     // HTTP
     implementation("com.google.code.gson:gson:2.8.9") // Serialization to and from JSON
 
