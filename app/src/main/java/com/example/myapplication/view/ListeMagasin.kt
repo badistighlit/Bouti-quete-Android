@@ -1,18 +1,33 @@
-package com.example.myapplication
+package com.example.myapplication.view
+
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import com.example.myapplication.R
+import com.example.myapplication.db.AppDatabase
+import com.example.myapplication.db.daos.MagasinAdresse
+import com.example.myapplication.db.entities.*
 import com.example.myapplication.model.magasin_model.Adresse
 import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.view.adapters.MagasinAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ListeMagasin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liste_magasin)
         val recyclerView: RecyclerView = findViewById(R.id.ListerecyclerView)
-        val magasins = listOf(
+        val backReturn: Button = findViewById(R.id.backReturn)
+
+        /*val magasins = listOf(
             Magasin(1, "KIKLOUTOU", Adresse("01 Rue Emile Gilbert", "75012", "Paris")),
             Magasin(2, "magasin sniper", Adresse("3 rue félixe faure", "75015", "Paris")),
             Magasin(3, "mingo", Adresse("9 rue friant", "75014", "Paris")),
@@ -28,14 +43,77 @@ class ListeMagasin : AppCompatActivity() {
             Magasin(13, "MegaBrico", Adresse("14 Rue du Bricolage", "69000", "Lyon")),
             Magasin(14, "Quincaillerie Central", Adresse("32 Rue des Forges", "59000", "Lille")),
             Magasin(15, "BricoPlus", Adresse("11 Avenue des Bâtisseurs", "54000", "Nancy"))
-        )
+        )*/
+
+        try {
+
+            val db = Room.databaseBuilder(
+                applicationContext,
+                AppDatabase::class.java, "database-name"
+            ).fallbackToDestructiveMigration().build()
+            Log.d("list", "test 1 passed")
+
+            val newAdress = adressEntity(
+                adressId = 0,
+                magasinsRueName = "01 Rue Emile Gilbert",
+                magasinsvilleId = "Paris",
+                magasinsPostalCode = "75012"
+            )
+            Log.d("list", "test 2 passed")
 
 
-        val adapter = MagasinAdapter(magasins)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+            val newMagasin = magasinsEntity(
+                magasinId = 0,
+                magasinsName = "KIKLOUTOU",
+                adressId = 0
+            )
+            Log.d("list", "test 3 passed")
 
+            var list: List<MagasinAdresse>?
+
+            runBlocking {
+                launch(Dispatchers.IO) {
+                    //db.MagasinsDao().insertMagasinWithAdress(newMagasin, newAdress)
+                    list = db.MagasinsAdressDao().getAll()
+                    Log.d("list", "Voici la liste: $list")
+                    val magasins = convertToListMagasin(list!!)
+
+                    val adapter = MagasinAdapter(magasins)
+                    recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasin)
+                    recyclerView.adapter = adapter
+                }
+            }
+
+
+
+        } catch (e: Exception) {
+            Log.e("list", "Erreur inattendue: ${e.message}")
+            e.printStackTrace()
+        }
+
+
+        backReturn.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        })
     }
+
+    private fun convertToListMagasin(list: List<MagasinAdresse>): List<Magasin> {
+        return list.map { magasinAdresse ->
+            Magasin(
+                id = magasinAdresse.magasinId,
+                nom = magasinAdresse.magasins_name,
+                adresse = Adresse(
+                    rue = magasinAdresse.magasins_rue_name,
+                    codePostal = magasinAdresse.magasins_postalCode,
+                    ville = magasinAdresse.magasins_ville_name
+                )
+            )
+        }
+    }
+
+
 }
 
 

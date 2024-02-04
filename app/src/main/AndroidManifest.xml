@@ -14,13 +14,13 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".ListeMagasinProche"
+            android:name=".view.ListeMagasinProche"
             android:exported="false" />
         <activity
             android:name=".RenseigneAdresseActivity"
             android:exported="false" />
         <activity
-            android:name=".ListeMagasin"
+            android:name=".view.ListeMagasin"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"

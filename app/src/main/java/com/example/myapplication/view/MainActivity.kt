@@ -2,18 +2,12 @@ package com.example.myapplication.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
-import com.example.myapplication.ListeMagasin
-import com.example.myapplication.ListeMagasinProche
 import com.example.myapplication.R
 import com.example.myapplication.RenseigneAdresseActivity
 import com.example.myapplication.repositories.LocalisationRepository
 import com.example.myapplication.repositories.RetrofitClient
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 class MainActivity : AppCompatActivity() {
 
