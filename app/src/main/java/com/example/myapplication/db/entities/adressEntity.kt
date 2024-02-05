@@ -9,6 +9,9 @@ data class adressEntity(
     @PrimaryKey(autoGenerate = true) val adressId: Int,
     @ColumnInfo(name = "magasins_rue_name") val magasinsRueName: String,
     @ColumnInfo(name = "magasins_ville_name") val magasinsvilleId: String,
-    @ColumnInfo(name = "magasins_postalCode") val magasinsPostalCode: String
+    @ColumnInfo(name = "magasins_postalCode") val magasinsPostalCode: String,
+    @ColumnInfo(name = "magasins_latitude") val magasinsLatitude: Double,
+    @ColumnInfo(name = "magasins_longitude") val magasinsLongitude: Double
+
 )
 

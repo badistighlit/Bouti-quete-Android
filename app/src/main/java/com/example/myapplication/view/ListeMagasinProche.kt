@@ -1,23 +1,23 @@
 package com.example.myapplication.view
 
-import ApiCaller
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.view.MainActivity
+import com.example.myapplication.R
 import com.example.myapplication.view.adapters.MagasinAdapter
 import com.example.myapplication.viewmodel.ApiCalcule
 import com.example.myapplication.viewmodel.LocalisationViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-val apiCaller = ApiCaller()
 
 class ListeMagasinProche : AppCompatActivity() {
 
@@ -34,12 +34,12 @@ class ListeMagasinProche : AppCompatActivity() {
         val rue = intent.getStringExtra("RUE")
         val ville = intent.getStringExtra("VILLE")
         val postalCode = intent.getStringExtra("CODE POSTAL")
-        val adresse = rue + ville + postalCode;
+        val adresse = rue + ville + postalCode
 
         val textView = findViewById<TextView>(R.id.Salutation)
         val textView2 = findViewById<TextView>(R.id.textView)
         textView.text = "BONJOUR " + nom + " " + prenom + " votre adresse est la suivante : \n" + adresse +
-                "\nVoici la liste des magasins les plus proche de chez vous";
+                "\nVoici la liste des magasins les plus proche de chez vous"
 
           lifecycleScope.launch {
               Log.d("ListeMagasinProche", "Avant appel à apiCalcule.getPlusProche")
@@ -51,11 +51,6 @@ class ListeMagasinProche : AppCompatActivity() {
               recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasinProche)
               recyclerView.adapter = adapter
           }
-
-
-
-        */
-
 
         backReturn.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, MainActivity::class.java)

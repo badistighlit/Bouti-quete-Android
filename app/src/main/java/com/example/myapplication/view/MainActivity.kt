@@ -5,14 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
-import androidx.lifecycle.lifecycleScope
-import com.example.myapplication.ListeMagasin
-import com.example.myapplication.ListeMagasinProche
 import com.example.myapplication.R
 import com.example.myapplication.RenseigneAdresseActivity
 import com.example.myapplication.viewmodel.ApiCalcule
 import com.example.myapplication.viewmodel.LocalisationViewModel
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -23,12 +19,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-
-
-
-
 
         val renseignedAdresse: Button = findViewById(R.id.btnRenseigneAdresse)
         renseignedAdresse.setOnClickListener(View.OnClickListener {

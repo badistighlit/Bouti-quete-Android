@@ -2,7 +2,6 @@ package com.example.myapplication.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -54,7 +53,9 @@ class ListeMagasin : AppCompatActivity() {
             adressId = 0,
             magasinsRueName = "01 Rue Emile Gilbert",
             magasinsvilleId = "Paris",
-            magasinsPostalCode = "75012"
+            magasinsPostalCode = "75012",
+            magasinsLatitude = 48.8460254,
+            magasinsLongitude = 2.3732395
         )
 
         val newMagasin = magasinsEntity(
@@ -67,12 +68,12 @@ class ListeMagasin : AppCompatActivity() {
 
         runBlocking {
             launch(Dispatchers.IO) {
-                //db.MagasinsDao().insertMagasinWithAdress(newMagasin, newAdress)
+                db.MagasinsDao().insertMagasinWithAdress(newMagasin, newAdress)
                 list = db.MagasinsAdressDao().getAll()
                 val magasins = convertToListMagasin(list!!)
-                val adapter = MagasinAdapter(magasins)
+                /*val adapter = MagasinAdapter(magasins, )
                 recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasin)
-                recyclerView.adapter = adapter
+                recyclerView.adapter = adapter*/
             }
         }
 
@@ -91,7 +92,9 @@ class ListeMagasin : AppCompatActivity() {
                 adresse = Adresse(
                     rue = magasinAdresse.magasins_rue_name,
                     codePostal = magasinAdresse.magasins_postalCode,
-                    ville = magasinAdresse.magasins_ville_name
+                    ville = magasinAdresse.magasins_ville_name,
+                    latitude = magasinAdresse.magasins_latitude,
+                    longitude = magasinAdresse.magasins_longitude
                 )
             )
         }
