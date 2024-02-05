@@ -45,52 +45,36 @@ class ListeMagasin : AppCompatActivity() {
             Magasin(15, "BricoPlus", Adresse("11 Avenue des Bâtisseurs", "54000", "Nancy"))
         )*/
 
-        try {
+        val db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "database-name"
+        ).fallbackToDestructiveMigration().build()
 
-            val db = Room.databaseBuilder(
-                applicationContext,
-                AppDatabase::class.java, "database-name"
-            ).fallbackToDestructiveMigration().build()
-            Log.d("list", "test 1 passed")
+        val newAdress = adressEntity(
+            adressId = 0,
+            magasinsRueName = "01 Rue Emile Gilbert",
+            magasinsvilleId = "Paris",
+            magasinsPostalCode = "75012"
+        )
 
-            val newAdress = adressEntity(
-                adressId = 0,
-                magasinsRueName = "01 Rue Emile Gilbert",
-                magasinsvilleId = "Paris",
-                magasinsPostalCode = "75012"
-            )
-            Log.d("list", "test 2 passed")
+        val newMagasin = magasinsEntity(
+            magasinId = 0,
+            magasinsName = "KIKLOUTOU",
+            adressId = 0
+        )
 
+        var list: List<MagasinAdresse>?
 
-            val newMagasin = magasinsEntity(
-                magasinId = 0,
-                magasinsName = "KIKLOUTOU",
-                adressId = 0
-            )
-            Log.d("list", "test 3 passed")
-
-            var list: List<MagasinAdresse>?
-
-            runBlocking {
-                launch(Dispatchers.IO) {
-                    //db.MagasinsDao().insertMagasinWithAdress(newMagasin, newAdress)
-                    list = db.MagasinsAdressDao().getAll()
-                    Log.d("list", "Voici la liste: $list")
-                    val magasins = convertToListMagasin(list!!)
-
-                    val adapter = MagasinAdapter(magasins)
-                    recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasin)
-                    recyclerView.adapter = adapter
-                }
+        runBlocking {
+            launch(Dispatchers.IO) {
+                //db.MagasinsDao().insertMagasinWithAdress(newMagasin, newAdress)
+                list = db.MagasinsAdressDao().getAll()
+                val magasins = convertToListMagasin(list!!)
+                val adapter = MagasinAdapter(magasins)
+                recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasin)
+                recyclerView.adapter = adapter
             }
-
-
-
-        } catch (e: Exception) {
-            Log.e("list", "Erreur inattendue: ${e.message}")
-            e.printStackTrace()
         }
-
 
         backReturn.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, MainActivity::class.java)
