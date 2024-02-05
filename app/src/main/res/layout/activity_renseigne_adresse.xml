@@ -4,7 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundTint="#FFFFFF"
     tools:context=".RenseigneAdresseActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fond" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,13 +35,23 @@
             android:id="@+id/nom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nom" />
+            android:backgroundTint="#FFFFFF"
+            android:drawableTint="#FFFFFF"
+            android:hint="Nom"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
         <EditText
             android:id="@+id/prenom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Prénom" />
+            android:backgroundTint="#FFFFFF"
+            android:drawableTint="#FFFFFF"
+            android:foregroundTint="#FFFFFF"
+            android:hint="Prénom"
+            android:shadowColor="#FFFFFF"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,13 +62,21 @@
                 android:id="@+id/rue"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:hint="Rue" />
+                android:backgroundTint="#FFFFFF"
+                android:drawableTint="#FFFFFF"
+                android:foregroundTint="#FFFFFF"
+                android:hint="Rue"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
             <EditText
                 android:id="@+id/ville"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:hint="Ville" />
+                android:backgroundTint="#FFFFFF"
+                android:hint="Ville"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
         </LinearLayout>
 
@@ -58,7 +89,10 @@
                 android:id="@+id/postalCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Code Postal" />
+                android:hint="Code Postal"
+                android:shadowColor="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
         </LinearLayout>
 

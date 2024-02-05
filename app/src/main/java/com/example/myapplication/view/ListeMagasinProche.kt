@@ -1,11 +1,9 @@
-package com.example.myapplication
+package com.example.myapplication.view
 
 import ApiCaller
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -56,7 +54,7 @@ class ListeMagasinProche : AppCompatActivity() {
 
 
 
-
+        */
 
 
         backReturn.setOnClickListener(View.OnClickListener {
