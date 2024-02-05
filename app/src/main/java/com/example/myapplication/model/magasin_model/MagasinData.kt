@@ -9,5 +9,8 @@ data class Magasin(
 data class Adresse(
     val rue: String,
     val codePostal: String,
-    val ville: String
+    val ville: String,
+    val latitude: Double,
+    val longitude : Double,
+
 )

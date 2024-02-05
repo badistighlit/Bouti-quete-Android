@@ -2,14 +2,19 @@ package com.example.myapplication.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.myapplication.network.LocalisationData
 import com.example.myapplication.network.LocalisationMapper
 import com.example.myapplication.network.LocalisationResponseObject
 import com.example.myapplication.repositories.LocalisationRepository
+import kotlin.coroutines.CoroutineContext
+
 //import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 class LocalisationViewModel(private val repository: LocalisationRepository,private val mapper: LocalisationMapper)
     : ViewModel() {
+    val coroutineContext: CoroutineContext
+        get() = viewModelScope.coroutineContext
 
     private val _localisationData = MutableLiveData<LocalisationData>()
     val localisationData: MutableLiveData<LocalisationData> get() = _localisationData
