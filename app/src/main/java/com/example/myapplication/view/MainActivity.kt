@@ -1,63 +1,51 @@
 package com.example.myapplication.view
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
+import androidx.lifecycle.lifecycleScope
+import com.example.myapplication.ListeMagasin
+import com.example.myapplication.ListeMagasinProche
 import com.example.myapplication.R
 import com.example.myapplication.RenseigneAdresseActivity
-import com.example.myapplication.repositories.LocalisationRepository
-import com.example.myapplication.repositories.RetrofitClient
+import com.example.myapplication.viewmodel.ApiCalcule
+import com.example.myapplication.viewmodel.LocalisationViewModel
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val TAG = "MainActivity"
-    private val apiService = RetrofitClient.create()
-    private val localisationRepository = LocalisationRepository(apiService)
-
+    private val localisationViewModel: LocalisationViewModel by viewModel()
+    private val apiCalcule: ApiCalcule by lazy { ApiCalcule(localisationViewModel) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val address = "01 RUE EMILE GILBERT 75012"
-/*
-        localisationRepository.getLatLong(address)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ response ->
-                // Réponse réussie
-                val latitude = response.results.firstOrNull()?.geometry?.location?.latitude
-                val longitude = response.results.firstOrNull()?.geometry?.location?.longitude
-                Log.d(TAG, "Latitude: $latitude, Longitude: $longitude")
-            }, { error ->
-                // Gérer les erreurs
-                Log.e(TAG, "Erreur lors de l'appel à l'API : ${error.message}")
-            })*/
-            val renseignedAdresse: Button = findViewById(R.id.btnRenseigneAdresse);
-            renseignedAdresse.setOnClickListener(View.OnClickListener {
+
+
+
+
+
+
+        val renseignedAdresse: Button = findViewById(R.id.btnRenseigneAdresse)
+        renseignedAdresse.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, RenseigneAdresseActivity::class.java)
-            startActivity(intent); })
+            startActivity(intent)
+        })
 
-            val chercheMagasin: Button = findViewById(R.id.btnSearchStore);
-            chercheMagasin.setOnClickListener(View.OnClickListener {
+        val chercheMagasin: Button = findViewById(R.id.btnSearchStore)
+        chercheMagasin.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, ListeMagasinProche::class.java)
-            startActivity(intent); })
+            startActivity(intent)
+        })
 
-            val nosMagasin: Button = findViewById(R.id.btnListeMagasins);
-           nosMagasin.setOnClickListener(View.OnClickListener {
+        val nosMagasin: Button = findViewById(R.id.btnListeMagasins)
+        nosMagasin.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, ListeMagasin::class.java)
-            startActivity(intent); })
-
-
-            /*val chercheProduit: Button = findViewById(R.id.btnSearchProduct);
-             chercheProduit.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, ListeMagasin::class.java)
-            startActivity(intent); })*/
-
-
+            startActivity(intent)
+        })
     }
 }
-
-
-
