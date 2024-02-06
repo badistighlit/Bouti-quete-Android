@@ -10,7 +10,7 @@ import com.example.myapplication.R
 import com.example.myapplication.model.magasin_model.Magasin
 
 class MagasinAdapter(
-    private val magasins: Map<Magasin, Double>
+    private var magasins: Map<Magasin, Double>
     , private val onMagasinClickListener: OnMagasinClickListener
 ) : RecyclerView.Adapter<MagasinAdapter.MagasinViewHolder>() {
 

@@ -1,11 +1,13 @@
 package com.example.myapplication.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.view.adapters.MagasinAdapter
 import com.example.myapplication.view.adapters.OnMagasinClickListener
 import com.example.myapplication.view.adapters.ProduitAdapter
