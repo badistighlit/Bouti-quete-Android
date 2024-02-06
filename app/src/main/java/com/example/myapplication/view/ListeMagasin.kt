@@ -2,11 +2,9 @@ package com.example.myapplication.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.myapplication.R
 import com.example.myapplication.db.AppDatabase
@@ -22,7 +20,6 @@ class ListeMagasin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liste_magasin)
-        val recyclerView: RecyclerView = findViewById(R.id.ListerecyclerView)
         val backReturn: Button = findViewById(R.id.backReturn)
 
 
@@ -31,20 +28,6 @@ class ListeMagasin : AppCompatActivity() {
             AppDatabase::class.java, "database-name"
         ).fallbackToDestructiveMigration().build()
 
-        val newAdress = adressEntity(
-            adressId = 0,
-            magasinsRueName = "01 Rue Emile Gilbert",
-            magasinsvilleId = "Paris",
-            magasinsPostalCode = "75012",
-            magasinsLatitude = 48.8460254,
-            magasinsLongitude = 2.3732395
-        )
-
-        val newMagasin = magasinsEntity(
-            magasinId = 0,
-            magasinsName = "KIKLOUTOU",
-            adressId = 0
-        )
 
         var list: List<MagasinAdresse>?
 
@@ -62,13 +45,6 @@ class ListeMagasin : AppCompatActivity() {
                 recyclerView.adapter = adapter*/
             }
         }
-
-        // le runBlocking rajoute en bouclant avec le for la list des magasins et leur adresse et les ajoute un par un dans la bdd
-        // les fonctions sont toutes en bas
-        // le convertToListMagasin sert a convertir ce que tu récup de la bdd
-        // et le convertToEntities fait l'inverse pour insert dans la bdd
-        // y a le fichier functionForBdd qui contient la même chose en bas j'ai essayé de faire le viewModel j'ai craqué j'ai tout foutu en bas
-        // et j'ai ajout un id à ta liste d'adresse prc que sinon ça rentre pas dans la bdd
 
         backReturn.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, MainActivity::class.java)

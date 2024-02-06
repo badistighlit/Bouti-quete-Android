@@ -1,13 +1,17 @@
 package com.example.myapplication.viewmodel
 
 import android.util.Log
+import androidx.room.Room
+import com.example.myapplication.db.AppDatabase
 import com.example.myapplication.db.daos.MagasinAdresse
 import com.example.myapplication.db.entities.adressEntity
 import com.example.myapplication.db.entities.magasinsEntity
 import com.example.myapplication.model.magasin_model.Adresse
 import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.network.observeOnce
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -19,6 +23,30 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 class functionForBDD() {
+
+
+    /*val db = Room.databaseBuilder(
+        applicationContext,
+        AppDatabase::class.java, "database-name"
+    ).fallbackToDestructiveMigration().build()
+
+    var list: List<MagasinAdresse>?
+
+    runBlocking {
+        launch(Dispatchers.IO) {
+            db.clearAllTables()
+            val entities = convertToEntities(listMagasin())
+            for ((magasinEntity, adressEntity) in entities) {
+                db.MagasinsDao().insertMagasinWithAdress(magasinEntity, adressEntity)
+            }
+            list = db.MagasinsAdressDao().getAll()
+            //magasins = convertToListMagasin(list!!)
+            /*val adapter = MagasinAdapter(magasins, )
+            recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasin)
+            recyclerView.adapter = adapter*/
+        }
+    }
+*/
 
     private fun listMagasin(): List<Magasin> {
         return listOf(
