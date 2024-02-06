@@ -16,6 +16,7 @@ import com.example.myapplication.db.entities.*
 import com.example.myapplication.model.magasin_model.Adresse
 import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.view.adapters.MagasinAdapter
+import com.example.myapplication.view.adapters.OnMagasinClickListener
 import com.example.myapplication.view.adapters.ProduitAdapter
 import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
 import com.example.myapplication.viewmodel.ListeMagasinViewModel
@@ -37,7 +38,14 @@ class ListeMagasin : AppCompatActivity() {
             0.0
         }
 
-       val adapter = MagasinAdapter(mappedmagasins)
+        val adapter = MagasinAdapter(mappedmagasins, object : OnMagasinClickListener {
+            override fun onMagasinClick(magasin: Magasin) {
+                // Action à effectuer lors du clic sur un magasin
+                val intent = Intent(this@ListeMagasin, ListeProduit::class.java)
+                // Ajoutez des données supplémentaires à l'intent si nécessaire
+                startActivity(intent)
+            }
+        })
         val recyclerView: RecyclerView = findViewById(R.id.ListerecyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasin)

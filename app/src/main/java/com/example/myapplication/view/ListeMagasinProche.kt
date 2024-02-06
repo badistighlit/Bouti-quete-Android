@@ -12,7 +12,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.view.adapters.MagasinAdapter
+import com.example.myapplication.view.adapters.OnMagasinClickListener
 import com.example.myapplication.viewmodel.ApiCalcule
 import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
 import kotlinx.coroutines.launch
@@ -46,7 +48,14 @@ class ListeMagasinProche : AppCompatActivity() {
               val magasins = apiCalcule.getPlusProche(adresse)
               Log.d("ListeMagasinProche", "Après appel à apiCalcule.getPlusProche")
               Log.d("test zboub", " $magasins")
-              val adapter = MagasinAdapter(magasins)
+              val adapter = MagasinAdapter(magasins, object : OnMagasinClickListener {
+                  override fun onMagasinClick(magasin: Magasin) {
+                      // Action à effectuer lors du clic sur un magasin
+                      val intent = Intent(this@ListeMagasinProche, ListeProduit::class.java)
+                      // Ajoutez des données supplémentaires à l'intent si nécessaire
+                      startActivity(intent)
+                  }
+              })
               val recyclerView: RecyclerView = findViewById(R.id.ListerecyclerView)
               recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasinProche)
               recyclerView.adapter = adapter
