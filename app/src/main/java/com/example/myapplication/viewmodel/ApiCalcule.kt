@@ -4,8 +4,10 @@ import android.util.Log
 import com.example.myapplication.model.magasin_model.Adresse
 import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.network.observeOnce
+import com.example.myapplication.repositories.DatabaseRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.withContext
+import org.koin.android.ext.android.inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 import kotlin.math.atan2
@@ -14,9 +16,17 @@ import kotlin.math.pow
 import kotlin.math.round
 import kotlin.math.sin
 import kotlin.math.sqrt
+import org.koin.android.ext.android.inject;
+import org.koin.java.KoinJavaComponent.inject;
 
 class ApiCalcule(private val localisationViewModel: LocalisationViewModel) {
+ //   val databaseRepository: DatabaseRepository
+ val databaseRepository: DatabaseRepository by inject(DatabaseRepository::class.java)
 
+    init {
+        databaseRepository.build()
+    }
+/*
     val magasins = listOf(
         Magasin(1, "KIKLOUTOU", Adresse(1, "01 Rue Emile Gilbert", "75012", "Paris",48.8460254,2.3732395)),
         Magasin(2, "magasin sniper", Adresse(2, "3 rue félixe faure", "75015", "Paris",48.83919906616211,2.2848060131073)),
@@ -32,19 +42,8 @@ class ApiCalcule(private val localisationViewModel: LocalisationViewModel) {
         Magasin(13, "MegaBrico", Adresse(12, "59 Rue Claude Farrère", "69003", "Lyon",45.74305555741711,4.893425951529609)),
         Magasin(14, "Quincaillerie Central", Adresse(13, "1 Rue Georges Lefebvre", "59000", "Lille",50.6307878508149,3.075074021645734)),
     )
-
-    suspend fun getMagasinsPlusProche(adresse: String) {
-        val distancesTriees = getPlusProche(adresse)
-
-        var compteur = 0
-        for ((magasin, distance) in distancesTriees) {
-            Log.d("test final", " Magasin: ${magasin.nom}, Distance: $distance km")
-            compteur++
-            if (compteur >= 3) {
-                break
-            }
-        }
-    }
+*/
+val magasins =databaseRepository.getMagasins();
 
     suspend fun getPlusProche(adresse: String): Map<Magasin, Double> {
         return suspendCoroutine { continuation ->

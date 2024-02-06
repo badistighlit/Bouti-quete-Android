@@ -2,6 +2,7 @@ package com.example.myapplication.di.modules
 
 import com.example.myapplication.network.LocalisationApi
 import com.example.myapplication.network.LocalisationMapper
+import com.example.myapplication.repositories.DatabaseRepository
 import com.example.myapplication.repositories.LocalisationRepository
 import com.example.myapplication.repositories.RetrofitClient
 import com.example.myapplication.viewmodel.ApiCalcule
@@ -16,8 +17,12 @@ val coreModules = module {
     single { ApiCalcule(get()) }
     single { LocalisationRepository(get()) }
     single { RetrofitClient.create() }
+    single { DatabaseRepository(get()) }
+
 }
 
 fun createLocalisationApi(): LocalisationApi {
     return RetrofitClient.create()
 }
+
+val appModules = listOf(coreModules, databaseModule)

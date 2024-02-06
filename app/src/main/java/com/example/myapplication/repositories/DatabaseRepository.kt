@@ -1,52 +1,46 @@
-package com.example.myapplication.viewmodel
+package com.example.myapplication.repositories
 
-import android.util.Log
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import androidx.room.Room
+import com.example.myapplication.R
 import com.example.myapplication.db.AppDatabase
 import com.example.myapplication.db.daos.MagasinAdresse
 import com.example.myapplication.db.entities.adressEntity
 import com.example.myapplication.db.entities.magasinsEntity
 import com.example.myapplication.model.magasin_model.Adresse
 import com.example.myapplication.model.magasin_model.Magasin
-import com.example.myapplication.network.observeOnce
+import com.example.myapplication.view.MainActivity
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
-import kotlin.math.atan2
-import kotlin.math.cos
-import kotlin.math.pow
-import kotlin.math.round
-import kotlin.math.sin
-import kotlin.math.sqrt
+import kotlinx.coroutines.runBlocking
 
-class functionForBDD() {
+class DatabaseRepository(private val db: AppDatabase) {
+    lateinit var list: List<Magasin>
+    fun build() {
 
 
-    /*val db = Room.databaseBuilder(
-        applicationContext,
-        AppDatabase::class.java, "database-name"
-    ).fallbackToDestructiveMigration().build()
 
-    var list: List<MagasinAdresse>?
+        runBlocking {
+            launch(Dispatchers.IO) {
+                db.clearAllTables()
+                val entities = convertToEntities(listMagasin())
+                for ((magasinEntity, adressEntity) in entities) {
+                    db.MagasinsDao().insertMagasinWithAdress(magasinEntity, adressEntity)
+                }
+                list = convertToListMagasin(db.MagasinsAdressDao().getAll());
 
-    runBlocking {
-        launch(Dispatchers.IO) {
-            db.clearAllTables()
-            val entities = convertToEntities(listMagasin())
-            for ((magasinEntity, adressEntity) in entities) {
-                db.MagasinsDao().insertMagasinWithAdress(magasinEntity, adressEntity)
             }
-            list = db.MagasinsAdressDao().getAll()
-            //magasins = convertToListMagasin(list!!)
-            /*val adapter = MagasinAdapter(magasins, )
-            recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasin)
-            recyclerView.adapter = adapter*/
         }
+
+
     }
-*/
+    public fun getMagasins():List<Magasin>{
+        return this.list;
+    }
+
 
     private fun listMagasin(): List<Magasin> {
         return listOf(
@@ -103,4 +97,5 @@ class functionForBDD() {
             Pair(magasinEntity, adressEntity)
         }
     }
+
 }
