@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.view.adapters.MagasinAdapter
+import com.example.myapplication.view.adapters.OnMagasinClickListener
+import com.example.myapplication.view.adapters.ProduitAdapter
+import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
 import com.example.myapplication.viewmodel.ListeMagasinViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -23,8 +26,15 @@ class ListeMagasin : AppCompatActivity() {
             0.0
         }
 
-       val adapter = MagasinAdapter(mappedmagasins)
-       val recyclerView: RecyclerView = findViewById(R.id.ListerecyclerView)
+        val adapter = MagasinAdapter(mappedmagasins, object : OnMagasinClickListener {
+            override fun onMagasinClick(magasin: Magasin) {
+                // Action à effectuer lors du clic sur un magasin
+                val intent = Intent(this@ListeMagasin, ListeProduit::class.java)
+                // Ajoutez des données supplémentaires à l'intent si nécessaire
+                startActivity(intent)
+            }
+        })
+        val recyclerView: RecyclerView = findViewById(R.id.ListerecyclerView)
 
        recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasin)
        recyclerView.adapter = adapter
