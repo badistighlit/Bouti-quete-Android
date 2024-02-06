@@ -13,6 +13,7 @@ import com.example.myapplication.db.AppDatabase
 import com.example.myapplication.repositories.DatabaseRepository
 import com.example.myapplication.viewmodel.ApiCalcule
 import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
+import com.example.myapplication.viewmodel.ListeMagasinViewModel
 import com.example.myapplication.viewmodel.ListeProduitViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,18 +24,14 @@ class MainActivity : AppCompatActivity() {
     private val listeMagasinProcheViewModel: ListeMagasinProcheViewModel by viewModel()
     private val apiCalcule: ApiCalcule by lazy { ApiCalcule(listeMagasinProcheViewModel)
     }
+    private val listeMagasinViewModel : ListeMagasinViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
          val databaseRepository: DatabaseRepository by inject();
         databaseRepository.build();
-        val adresse = "Lyon"
-        val plusProcheLiveData = listeMagasinProcheViewModel.getPlusProche(adresse)
 
-        // Observe the LiveData in your activity
-        plusProcheLiveData.observe(this, Observer { result ->
-            // Handle the result here
-            Log.v("pipo", "$result")
-        })
+
+
 
 
 

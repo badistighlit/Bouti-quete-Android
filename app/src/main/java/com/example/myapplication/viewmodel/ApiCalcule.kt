@@ -20,23 +20,7 @@ class ApiCalcule(private val listeMagasinProcheViewModel: ListeMagasinProcheView
     init {
         databaseRepository.build()
     }
-/*
-    val magasins = listOf(
-        Magasin(1, "KIKLOUTOU", Adresse(1, "01 Rue Emile Gilbert", "75012", "Paris",48.8460254,2.3732395)),
-        Magasin(2, "magasin sniper", Adresse(2, "3 rue félixe faure", "75015", "Paris",48.83919906616211,2.2848060131073)),
-        Magasin(3, "mingo", Adresse(3, "9 rue friant", "75014", "Paris",48.8261949,2.3247556)),
-        Magasin(4, "hmimouch", Adresse(4, "135 Avenue fontainebleau", "94270", "Le Kremlin-Bicêtre",48.81172561645508,2.3617711067199707)),
-        Magasin(5, "DISBA", Adresse(5, "Pl. du 4 Septembre", "13007", "Marseille",43.288631439208984,5.359172821044922)),
-        Magasin(6, "La Maison des Outils", Adresse(6, "22 Rue de la République", "13001", "Marseille",43.29780960083008,5.372910022735596)),
-        Magasin(7, "SuperQuincaillerie", Adresse(7, "18 Avenue de Verdun", "06500", "Menton",43.7761657,7.4944641)),
-        Magasin(8, "BricoExpress", Adresse(8, "12 Rue des Fabriques", "54100", "Nancy",48.6859096,6.1877869)),
-        Magasin(9, "Quincaillerie Moderne", Adresse(9, "5 Boulevard de la Liberté", "44800", "Saint-Herblain",47.2230224609375,-1.6039869785308838)),
-        Magasin(10, "Outillorama", Adresse(10, "26 Rue du Bassin du Commerce", "67000", "Strasbourg",48.58171844482422,7.789248466491699)),
-        Magasin(11, "BricoFrance", Adresse(11, "8 Avenue de la Gare", "33610 ", "Cestas",44.77375793457031,-0.701376736164093)),
-        Magasin(13, "MegaBrico", Adresse(12, "59 Rue Claude Farrère", "69003", "Lyon",45.74305555741711,4.893425951529609)),
-        Magasin(14, "Quincaillerie Central", Adresse(13, "1 Rue Georges Lefebvre", "59000", "Lille",50.6307878508149,3.075074021645734)),
-    )
-*/
+
 val magasins =databaseRepository.getMagasins();
 
     suspend fun getPlusProche(adresse: String): Map<Magasin, Double> {

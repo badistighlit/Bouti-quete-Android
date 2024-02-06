@@ -45,42 +45,9 @@ import kotlin.math.sqrt
 
     }
 
-    private fun getDistanceCordinate(latInit: Double, longInit: Double, latFinal: Double, longFinal: Double): Double {
-        val R = 6371  // Rayon moyen de la Terre en kilomètres
-        val (rLat1, rLon1, rLat2, rLon2) = listOf(latInit, longInit, latFinal, longFinal).map { Math.toRadians(it) }
 
-        val dLat = rLat2 - rLat1
-        val dLon = rLon2 - rLon1
 
-        val a = sin(dLat / 2).pow(2) + cos(rLat1) * cos(rLat2) * sin(dLon / 2).pow(2)
-        val c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
-        var distance = R * c
-
-        return (round(distance * 100) / 100)
-    }
-
-    fun getPlusProche(adresse: String): LiveData<Map<Magasin, Double>> {
-        val result = MutableLiveData<Map<Magasin, Double>>()
-
-        localisationData.observeOnce { localisationData ->
-            localisationData?.let {
-                val latitude = it.latitude
-                val longitude = it.longitude
-
-                val distances = magasins.associateWith { magasin ->
-                    getDistanceCordinate(latitude, longitude, magasin.adresse.latitude, magasin.adresse.longitude)
-                }
-
-                val distancesTriees = distances.toList().sortedBy { it.second }.toMap()
-                result.postValue(distancesTriees)
-            }
-        }
-
-        getLatLong(adresse)
-
-        return result
-    }
 
 
 
