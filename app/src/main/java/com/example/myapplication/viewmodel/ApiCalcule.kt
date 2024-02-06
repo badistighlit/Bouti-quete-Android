@@ -1,13 +1,8 @@
 package com.example.myapplication.viewmodel
 
-import android.util.Log
-import com.example.myapplication.model.magasin_model.Adresse
 import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.network.observeOnce
 import com.example.myapplication.repositories.DatabaseRepository
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.withContext
-import org.koin.android.ext.android.inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 import kotlin.math.atan2
@@ -16,10 +11,9 @@ import kotlin.math.pow
 import kotlin.math.round
 import kotlin.math.sin
 import kotlin.math.sqrt
-import org.koin.android.ext.android.inject;
 import org.koin.java.KoinJavaComponent.inject;
 
-class ApiCalcule(private val localisationViewModel: LocalisationViewModel) {
+class ApiCalcule(private val listeMagasinProcheViewModel: ListeMagasinProcheViewModel) {
  //   val databaseRepository: DatabaseRepository
  val databaseRepository: DatabaseRepository by inject(DatabaseRepository::class.java)
 
@@ -47,7 +41,7 @@ val magasins =databaseRepository.getMagasins();
 
     suspend fun getPlusProche(adresse: String): Map<Magasin, Double> {
         return suspendCoroutine { continuation ->
-            localisationViewModel.localisationData.observeOnce { localisationData ->
+            listeMagasinProcheViewModel.localisationData.observeOnce { localisationData ->
                 localisationData?.let {
                     val latitude = it.latitude
                     val longitude = it.longitude
@@ -61,7 +55,7 @@ val magasins =databaseRepository.getMagasins();
                 }
             }
 
-            localisationViewModel.getLatLong(adresse)
+            listeMagasinProcheViewModel.getLatLong(adresse)
         }
     }
 

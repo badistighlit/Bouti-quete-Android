@@ -6,14 +6,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.network.LocalisationData
 import com.example.myapplication.network.LocalisationMapper
-import com.example.myapplication.network.LocalisationResponseObject
 import com.example.myapplication.network.observeOnce
 import com.example.myapplication.repositories.DatabaseRepository
 import com.example.myapplication.repositories.LocalisationRepository
 import org.koin.java.KoinJavaComponent
 import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.pow
@@ -23,7 +20,7 @@ import kotlin.math.sqrt
 
 //import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
-abstract class LocalisationViewModel(private val repository: LocalisationRepository, private val mapper: LocalisationMapper)
+ class ListeMagasinProcheViewModel(private val repository: LocalisationRepository, private val mapper: LocalisationMapper)
     : ViewModel() {
 
     val databaseRepository: DatabaseRepository by KoinJavaComponent.inject(DatabaseRepository::class.java);

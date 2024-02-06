@@ -12,21 +12,23 @@ import com.example.myapplication.RenseigneAdresseActivity
 import com.example.myapplication.db.AppDatabase
 import com.example.myapplication.repositories.DatabaseRepository
 import com.example.myapplication.viewmodel.ApiCalcule
-import com.example.myapplication.viewmodel.LocalisationViewModel
+import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
+import com.example.myapplication.viewmodel.ListeProduitViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     private val db: AppDatabase by inject()
-    private val localisationViewModel: LocalisationViewModel by viewModel()
-    private val apiCalcule: ApiCalcule by lazy { ApiCalcule(localisationViewModel)
+    private val listeProduitViewModel : ListeProduitViewModel by viewModel()
+    private val listeMagasinProcheViewModel: ListeMagasinProcheViewModel by viewModel()
+    private val apiCalcule: ApiCalcule by lazy { ApiCalcule(listeMagasinProcheViewModel)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
          val databaseRepository: DatabaseRepository by inject();
         databaseRepository.build();
         val adresse = "Lyon"
-        val plusProcheLiveData = localisationViewModel.getPlusProche(adresse)
+        val plusProcheLiveData = listeMagasinProcheViewModel.getPlusProche(adresse)
 
         // Observe the LiveData in your activity
         plusProcheLiveData.observe(this, Observer { result ->
@@ -43,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         val searchProduct: Button = findViewById(R.id.btnSearchProduct)
         searchProduct.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, ListProduit::class.java)
+            val intent = Intent(this, ListeProduit::class.java)
             startActivity(intent)
         })
 

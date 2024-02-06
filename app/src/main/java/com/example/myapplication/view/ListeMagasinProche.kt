@@ -14,15 +14,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.view.adapters.MagasinAdapter
 import com.example.myapplication.viewmodel.ApiCalcule
-import com.example.myapplication.viewmodel.LocalisationViewModel
+import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ListeMagasinProche : AppCompatActivity() {
 
-    private val localisationViewModel: LocalisationViewModel by viewModel()
-    private val apiCalcule: ApiCalcule by lazy { ApiCalcule(localisationViewModel) }
+    private val listeMagasinProcheViewModel: ListeMagasinProcheViewModel by viewModel()
+    private val apiCalcule: ApiCalcule by lazy { ApiCalcule(listeMagasinProcheViewModel) }
       @SuppressLint("SuspiciousIndentation")
       override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
