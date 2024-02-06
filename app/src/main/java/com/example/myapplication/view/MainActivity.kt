@@ -41,6 +41,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val searchProduct: Button = findViewById(R.id.btnSearchProduct)
+        searchProduct.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, ListProduit::class.java)
+            startActivity(intent)
+        })
+
         val renseignedAdresse: Button = findViewById(R.id.btnRenseigneAdresse)
         renseignedAdresse.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, RenseigneAdresseActivity::class.java)
