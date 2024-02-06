@@ -7,6 +7,7 @@ data class Magasin(
 )
 
 data class Adresse(
+    val id: Int,
     val rue: String,
     val codePostal: String,
     val ville: String,

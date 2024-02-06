@@ -9,7 +9,7 @@ import com.example.myapplication.db.entities.*
 
 @Database(
     entities = [magasinsEntity::class, adressEntity::class], // Ajoutez vos entités ici
-    version = 1
+    version = 2
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract fun MagasinsDao(): MagasinsDao

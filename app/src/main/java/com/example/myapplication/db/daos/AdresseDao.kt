@@ -15,11 +15,5 @@ interface AdresseDao {
     @Insert
     fun insertAdress(adress: adressEntity): Long
 
-    @Insert
-    fun insertNewMagasins(magasinsEntity: magasinsEntity)
-
-    @Delete
-    fun deleteMagasins(magasinsEntity: magasinsEntity)
-
 
 }

@@ -3,6 +3,7 @@ package com.example.myapplication.db.daos
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.example.myapplication.db.entities.*
@@ -12,14 +13,18 @@ interface MagasinsDao {
     @Query("SELECT * FROM magasins_entity")
     fun getAllMagasins(): List<magasinsEntity>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAdress(adress: adressEntity): Long
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNewMagasins(magasinsEntity: magasinsEntity)
 
     @Delete
-    fun deleteMagasins(magasinsEntity: magasinsEntity)
+    fun deleteMagasins(magasins: magasinsEntity, adress: adressEntity){
+        val adressId = insertAdress(adress)
+        magasins.adressId = adressId.toInt()
+        insertNewMagasins(magasins)
+    }
 
     @Transaction
     fun insertMagasinWithAdress(magasins: magasinsEntity, adress: adressEntity) {
