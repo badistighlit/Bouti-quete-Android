@@ -1,5 +1,5 @@
 package com.example.myapplication.network
-import com.example.myapplication.model.coordinate_model.Coordinate
+
 import com.google.gson.annotations.SerializedName
 
 data class LocalisationResponseObject(
@@ -26,4 +26,9 @@ data class LocalisationData(
 
     @SerializedName("lng")
     val longitude: Double
+)
+
+data class LocalisationPosition(
+    @SerializedName("formatted_address")
+    val position: String
 )
