@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Thème sombre -->
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Ajoutez vos attributs de style pour le mode sombre ici -->
+
+        <!-- Exemple d'attributs de style -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/black</item>
+        <!-- Ajoutez d'autres attributs selon vos besoins -->
+    </style>
+
+    <!-- Thème par défaut -->
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+
+</resources>

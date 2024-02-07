@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,20 +27,20 @@
             android:id="@+id/backReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back" />
+            android:text="Back"
+            />
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/SearchItem"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            app:queryHint="Search here ..."
+            android:layout_width="422dp"
+            android:layout_height="38dp"
             app:iconifiedByDefault="false"
-            />
+            app:queryHint="Je cherche un produit ..." />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ListerecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="607dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"

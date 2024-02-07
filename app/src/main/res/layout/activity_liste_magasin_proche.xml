@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +31,10 @@
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/SearchItem"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            app:queryHint="Search here ..."
+            android:layout_width="422dp"
+            android:layout_height="38dp"
             app:iconifiedByDefault="false"
-            />
+            app:queryHint="Je cherche un magasin ..." />
 
         <TextView
             android:id="@+id/Salutation"

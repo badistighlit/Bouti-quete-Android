@@ -7,33 +7,47 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".view.DetailsProduit">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fond" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="660dp"
         android:layout_gravity="center"
-        android:padding="16dp">
-
+        android:padding="16dp"
+        android:background="#F4F4F4">
 
         <ImageView
             android:id="@+id/Photo"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/pizza"
-        android:scaleType="centerCrop"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"/>
+            android:layout_width="395dp"
+            android:layout_height="241dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pizza" />
 
         <TextView
             android:id="@+id/nom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="366dp"
+            android:layout_height="51dp"
             android:layout_below="@id/Photo"
             android:layout_marginTop="16dp"
-            android:text="nom Produit"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
+            android:text="Nom du Produit"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#333333" />
 
         <TextView
             android:id="@+id/prix"
@@ -41,9 +55,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/nom"
             android:layout_marginTop="8dp"
-            android:text="prix"
-            android:textStyle="bold" />
-
+            android:text="Prix"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="#FF5733" />
 
         <TextView
             android:id="@+id/Description"
@@ -51,8 +66,9 @@
             android:layout_height="317dp"
             android:layout_below="@id/prix"
             android:layout_marginTop="8dp"
-            android:text=" Description" />
-
+            android:textSize="20sp"
+            android:text="Description du Produit"
+            android:textColor="#666666" />
     </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

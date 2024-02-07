@@ -1,15 +1,14 @@
-<!-- item_magasin.xml -->
+<!-- item_produit.xml -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-
-
-
     android:padding="16dp"
     android:layout_margin="8dp"
-    >
+    android:background="#F5F5DC"
+    android:elevation="4dp"
+    android:gravity="center_vertical">
 
     <ImageView
         android:id="@+id/ProduitImage"
@@ -17,27 +16,27 @@
         android:layout_height="100dp"
         android:scaleType="centerCrop"
         android:src="@drawable/pizza"
-        />
+        android:contentDescription="Product Image"/>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="16dp">
 
         <TextView
             android:id="@+id/NomProduit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:text="Nom du Produit"
             android:textSize="22sp"
             android:textStyle="bold"
-
-            />
+            android:textColor="#000000"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Space
@@ -49,10 +48,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Prix du produit"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="#555555"/>
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

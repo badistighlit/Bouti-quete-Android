@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFF7"
     tools:context=".view.MainActivity">
 
     <ImageView
@@ -33,29 +34,18 @@
             android:orientation="horizontal"
             android:gravity="end">
 
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_weight="1"
-                android:text="Language En"
-                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="182dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="293dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -64,34 +54,59 @@
                 android:layout_width="228dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Je cherche un produit" />
+                android:background="#F5F5DC"
+                android:text="Je cherche un produit"
+                android:textColor="#000000"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorLink="#FFFFFF"
+                app:rippleColor="#FFFFFF"
+                android:radius="20dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnListeMagasins"
-                android:layout_width="219dp"
+                android:layout_width="228dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="#F5F5DC"
                 android:onClick="openListeMagasin"
-                android:text="Voir tout nos magasin" />
+                android:text="Voir tout nos magasins"
+                android:textColor="#000000"
+                app:cornerRadius="20dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnSearchStore"
-                android:layout_width="224dp"
+                android:layout_width="226dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Je cherche un magasin" />
+                android:background="#F5F5DC"
+                android:text="Je cherche un magasin"
+                android:textColor="#000000"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textColorLink="#FFFFFF"
+                android:radius="20dp"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
+            <Button
+                android:id="@+id/btnRenseigneAdresse"
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="#F5F5DC"
+                android:text="Les magasins à coté de moi"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText"
+                android:textAlignment="center"
+                android:textSize="16sp" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnRenseigneAdresse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:text="Les magasins à coté de moi"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
