@@ -6,11 +6,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.model.magasin_model.Produit
+import com.example.myapplication.view.ClickListeners.OnProduitClickListener
 
 
-class ProduitAdapter(private val produit: List<Produit>) :
+class ProduitAdapter(
+    private var produits: List<Produit>,
+
+    private val onProduitClickListener: OnProduitClickListener
+):
     RecyclerView.Adapter<ProduitAdapter.ProduitViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProduitViewHolder {
@@ -20,11 +24,24 @@ class ProduitAdapter(private val produit: List<Produit>) :
     }
 
     override fun onBindViewHolder(holder: ProduitViewHolder, position: Int) {
-        val produit = produit[position]
+        val produit = produits[position]
         holder.bind(produit)
+        holder.itemView.setOnClickListener {
+            onProduitClickListener.OnProduitClick(produit)
+        }
     }
-
-    override fun getItemCount(): Int = produit.size
+    fun filterList(filterText: String) {
+        produits = if (filterText.isEmpty()) {
+            produits // Aucun filtre, afficher la liste complète
+        } else {
+            // Filtrer les magasins dont le nom contient le texte de filtrage
+            produits.filter { produit->
+                produit.nom.contains(filterText, ignoreCase = true)
+            }
+        }
+        notifyDataSetChanged()
+    }
+    override fun getItemCount(): Int = produits.size
 
     class ProduitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nomTextView: TextView = itemView.findViewById(R.id.NomProduit)
@@ -35,7 +52,11 @@ class ProduitAdapter(private val produit: List<Produit>) :
             nomTextView.text = produit.nom
             prixTextView.text = "${produit.prix}€"
 
+
         }
     }
 }
+
+
+
 

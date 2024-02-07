@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.model.magasin_model.Magasin
+import com.example.myapplication.view.ClickListeners.OnMagasinClickListener
 
 class MagasinAdapter(
     private var magasins: Map<Magasin, Double>
@@ -65,6 +66,4 @@ class MagasinAdapter(
         }
     }
 }
-interface OnMagasinClickListener {
-    fun onMagasinClick(magasin: Magasin)
-}
+

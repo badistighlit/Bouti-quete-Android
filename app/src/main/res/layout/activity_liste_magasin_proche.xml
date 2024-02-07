@@ -29,6 +29,14 @@
             android:layout_height="wrap_content"
             android:text="Back" />
 
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/SearchItem"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:queryHint="Search here ..."
+            app:iconifiedByDefault="false"
+            />
+
         <TextView
             android:id="@+id/Salutation"
             android:layout_width="match_parent"

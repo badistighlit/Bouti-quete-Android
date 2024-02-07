@@ -1,4 +1,5 @@
 package com.example.myapplication.viewmodel
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -41,6 +42,7 @@ import kotlin.math.sqrt
 
     fun getLatLong(address: String) {
         val reponse = mapper.mapping(repository.getLatLong(address).blockingFirst())
+        Log.v("testest","$reponse")
         _localisationData.postValue(reponse)
 
     }
