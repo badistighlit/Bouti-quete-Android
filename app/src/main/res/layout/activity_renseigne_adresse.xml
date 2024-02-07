@@ -100,7 +100,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="374dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -108,8 +108,8 @@
                 android:id="@+id/valider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Valider"
                 android:backgroundTint="#F5F5DC"
+                android:text="Valider"
                 android:textColor="#000000" />
 
             <Space
@@ -120,12 +120,23 @@
             <Button
                 android:id="@+id/getLocalisation"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Ma position"
                 android:backgroundTint="#F5F5DC"
+                android:text="Ma position"
                 android:textColor="#000000" />
         </LinearLayout>
+
+
+
+
     </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

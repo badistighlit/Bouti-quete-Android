@@ -7,14 +7,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.view.Extensions.setupBottomNavigation
 import com.example.myapplication.view.ListeMagasinProche
 import com.example.myapplication.view.MainActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RenseigneAdresseActivity : AppCompatActivity() {
+    lateinit var bottomNavigationView: BottomNavigationView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_renseigne_adresse)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.setupBottomNavigation(this)
 
         val nomEditText: EditText = findViewById(R.id.nom)
         val prenomEditText: EditText = findViewById(R.id.prenom)

@@ -21,11 +21,13 @@
         app:srcCompat="@drawable/fond" />
 
     <RelativeLayout
+        android:id="@+id/detailsLayout"
         android:layout_width="match_parent"
-        android:layout_height="660dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:padding="16dp"
-        android:background="#F4F4F4">
+        android:background="#F4F4F4"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <ImageView
             android:id="@+id/Photo"
@@ -63,12 +65,23 @@
         <TextView
             android:id="@+id/Description"
             android:layout_width="395dp"
-            android:layout_height="317dp"
+            android:layout_height="204dp"
             android:layout_below="@id/prix"
             android:layout_marginTop="8dp"
-            android:textSize="20sp"
             android:text="Description du Produit"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:textSize="20sp" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+            app:layout_anchor="@id/Description"
+            app:layout_anchorGravity="bottom"
+            app:menu="@menu/nav_menu" />
     </RelativeLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

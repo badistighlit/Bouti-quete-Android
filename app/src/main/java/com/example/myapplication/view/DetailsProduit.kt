@@ -12,13 +12,17 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityDetailsProduitBinding
+import com.example.myapplication.view.Extensions.setupBottomNavigation
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DetailsProduit : AppCompatActivity() {
 
-
+    lateinit var bottomNavigationView: BottomNavigationView;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_produit)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.setupBottomNavigation(this)
 
         val nom = intent.getStringExtra("nom")
         val prix = intent.getStringExtra("prix")

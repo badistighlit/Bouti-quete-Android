@@ -12,18 +12,23 @@ import com.example.myapplication.R
 import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.model.magasin_model.Produit
 import com.example.myapplication.view.ClickListeners.OnProduitClickListener
+import com.example.myapplication.view.Extensions.setupBottomNavigation
 import com.example.myapplication.view.adapters.ProduitAdapter
 import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
 import com.example.myapplication.viewmodel.ListeProduitViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListeProduit : AppCompatActivity() {
     private val listeProduitViewModel: ListeProduitViewModel by viewModel()
+    lateinit var bottomNavigationView: BottomNavigationView;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_produit)
         val backReturn: Button = findViewById(R.id.backReturn)
         val searchItem: SearchView = findViewById(R.id.SearchItem)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.setupBottomNavigation(this)
 
 
         val adapter = ProduitAdapter(listeProduitViewModel.getListeProduits(), object :
