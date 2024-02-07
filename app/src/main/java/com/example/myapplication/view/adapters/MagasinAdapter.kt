@@ -10,9 +10,12 @@ import com.example.myapplication.R
 import com.example.myapplication.model.magasin_model.Magasin
 
 class MagasinAdapter(
-    private val magasins: Map<Magasin, Double>
+    private var magasins: Map<Magasin, Double>
     , private val onMagasinClickListener: OnMagasinClickListener
 ) : RecyclerView.Adapter<MagasinAdapter.MagasinViewHolder>() {
+
+    private var magasinsBackup: Map<Magasin, Double> = magasins
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MagasinViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -24,6 +27,19 @@ class MagasinAdapter(
         val (magasin, distance) = magasins.entries.elementAt(position)
         holder.bind(magasin, distance)
     }
+
+    fun filterList(filterText: String) {
+        magasins = if (filterText.isEmpty()) {
+            magasinsBackup // Aucun filtre, afficher la liste complète
+        } else {
+            // Filtrer les magasins dont le nom contient le texte de filtrage
+            magasinsBackup.filter { (magasin, _) ->
+                magasin.nom.contains(filterText, ignoreCase = true)
+            }
+        }
+        notifyDataSetChanged()
+    }
+
 
     override fun getItemCount(): Int = magasins.size
 

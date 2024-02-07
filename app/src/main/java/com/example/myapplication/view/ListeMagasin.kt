@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -31,7 +32,8 @@ class ListeMagasin : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liste_magasin)
-        Log.v("pipooo","avanrt")
+        val searchItem: SearchView = findViewById(R.id.SearchItem)
+
 
         val magasins = listeMagasinviewModel.getListeMagasins();
         val mappedmagasins =magasins.associateWith { magasin ->
@@ -50,6 +52,18 @@ class ListeMagasin : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this@ListeMagasin)
         recyclerView.adapter = adapter
+
+        searchItem.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                adapter.filterList(newText)
+                return true
+            }
+        })
+
 
 
     }
