@@ -23,6 +23,7 @@ class ListeMagasin : AppCompatActivity() {
         setContentView(R.layout.activity_liste_magasin)
         val searchItem: SearchView = findViewById(R.id.SearchItem)
 
+
         val magasins = listeMagasinviewModel.getListeMagasins()
         val mappedmagasins =magasins.associateWith { magasin ->
             0.0
@@ -51,6 +52,8 @@ class ListeMagasin : AppCompatActivity() {
                 return true
             }
         })
+
+
 
     }
 

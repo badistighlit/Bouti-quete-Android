@@ -16,6 +16,7 @@ class MagasinAdapter(
 
     private var magasinsBackup: Map<Magasin, Double> = magasins
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MagasinViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_magasin, parent, false)
@@ -38,6 +39,7 @@ class MagasinAdapter(
         }
         notifyDataSetChanged()
     }
+
 
     override fun getItemCount(): Int = magasins.size
 
