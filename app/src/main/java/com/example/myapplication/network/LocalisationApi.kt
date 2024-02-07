@@ -13,6 +13,9 @@ interface LocalisationApi {
         @Query("key") apiKey: String
     ): Flowable<LocalisationResponseObject>
 
+    fun getAdress(
+        @Query("latlng") coordinate: String
 
+    )
 
 }

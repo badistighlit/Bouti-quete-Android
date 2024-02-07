@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.view.ListeMagasinProche
 import com.example.myapplication.view.MainActivity
@@ -22,6 +23,7 @@ class RenseigneAdresseActivity : AppCompatActivity() {
         val postalCodeEditText: EditText = findViewById(R.id.postalCode)
         val validerButton: Button = findViewById(R.id.valider)
         val backReturn: Button = findViewById(R.id.backReturn)
+        val getLocalisation: Button = findViewById(R.id.getLocalisation)
 
         validerButton.setOnClickListener {
             val nom = nomEditText.text.toString()
@@ -39,6 +41,10 @@ class RenseigneAdresseActivity : AppCompatActivity() {
                 putExtra("CODE POSTAL", postalCode)
             }
             startActivity(intent)
+        }
+
+        getLocalisation.setOnClickListener {
+
         }
 
         backReturn.setOnClickListener(View.OnClickListener {
