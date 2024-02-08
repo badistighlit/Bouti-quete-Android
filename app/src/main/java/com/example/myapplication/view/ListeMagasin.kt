@@ -2,6 +2,8 @@ package com.example.myapplication.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +22,7 @@ class ListeMagasin : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liste_magasin)
+        val backReturn: Button = findViewById(R.id.backReturn)
         val searchItem: SearchView = findViewById(R.id.SearchItem)
 
 
@@ -52,7 +55,11 @@ class ListeMagasin : AppCompatActivity() {
             }
         })
 
-
+        backReturn.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        })
 
     }
 

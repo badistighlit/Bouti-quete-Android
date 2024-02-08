@@ -72,11 +72,11 @@ class ListeMagasinProche : AppCompatActivity() {
           }
 
 
-        backReturn.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        })
+          backReturn.setOnClickListener(View.OnClickListener {
+              val intent = Intent(this, MainActivity::class.java)
+              startActivity(intent)
+              finish()
+          })
     }
 
 
