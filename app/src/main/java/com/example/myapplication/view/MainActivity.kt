@@ -1,17 +1,9 @@
 package com.example.myapplication.view
 
-import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import android.view.View
-import android.widget.Button
-import androidx.lifecycle.Observer
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.R
-import com.example.myapplication.RenseigneAdresseActivity
 import com.example.myapplication.db.AppDatabase
 import com.example.myapplication.repositories.DatabaseRepository
 import com.example.myapplication.view.Extensions.setupBottomNavigation
@@ -32,7 +24,14 @@ class MainActivity : AppCompatActivity() {
     private val listeMagasinViewModel : ListeMagasinViewModel by viewModel()
     lateinit var bottomNavigationView: BottomNavigationView ;
     override fun onCreate(savedInstanceState: Bundle?) {
-         val databaseRepository: DatabaseRepository by inject();
+
+        if (isDarkModeEnabled()) {
+            setTheme(R.style.Base_Theme_MyApplication_Dark);
+        } else {
+            setTheme(R.style.Base_Theme_MyApplication);
+        }
+
+        val databaseRepository: DatabaseRepository by inject();
         databaseRepository.build();
 
         super.onCreate(savedInstanceState)
@@ -45,6 +44,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+    private fun isDarkModeEnabled(): Boolean {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
     }
 
 }
