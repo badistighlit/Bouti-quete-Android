@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -27,7 +28,8 @@
             android:id="@+id/backReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back" />
+            android:text="Back"
+            android:textColor="#000000"/>
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/SearchItem"
@@ -41,17 +43,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="TextView"
+            android:text="Bienvenue dans notre application !"
             android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            tools:ignore="MissingConstraints" />
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="start"/>
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
+            android:text="N'hésitez pas à cliquer sur un magasin pour voir les produits qu'il offre ;) !"
+            android:textColor="#FFFFDD"
             android:textColorHint="#FFFFFF" />
 
         <LinearLayout

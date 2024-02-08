@@ -23,88 +23,62 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="-16dp">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="end">
+            android:gravity="end"
+            android:orientation="horizontal">
 
         </LinearLayout>
+
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="182dp"
+            android:layout_width="331dp"
+            android:layout_height="296dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/logo" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="441dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnSearchProduct"
-                android:layout_width="228dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="#F5F5DC"
-                android:radius="20dp"
-                android:text="Je cherche un produit"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textColorHighlight="#FFFFFF"
-                android:textColorLink="#FFFFFF"
-                android:textSize="16sp"
-                app:rippleColor="#FFFFFF" />
-
-            <Button
-                android:id="@+id/btnListeMagasins"
-                android:layout_width="228dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="#F5F5DC"
-                android:onClick="openListeMagasin"
-                android:text="Voir tout nos magasins"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:cornerRadius="20dp" />
+        <TextView
+            android:id="@+id/appDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="212dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:lineSpacingExtra="8dp"
+            android:text="Ici,\n vous pouvez consulter nos magasins à travers la France,\n à coté de chez vous \n et les produits qu'ils offrent ! ;)"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
 
-
-            <Button
-                android:id="@+id/btnRenseigneAdresse"
-                android:layout_width="226dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:background="#F5F5DC"
-                android:text="Les magasins à coté de moi"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="114dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appDescription"
+            app:srcCompat="@drawable/arrow" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_alignParentBottom="true"
             app:menu="@menu/nav_menu" />
 
+
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

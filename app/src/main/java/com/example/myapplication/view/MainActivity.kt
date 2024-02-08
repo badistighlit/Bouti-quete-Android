@@ -43,23 +43,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val searchProduct: Button = findViewById(R.id.btnSearchProduct)
-        searchProduct.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, ListeProduit::class.java)
-            startActivity(intent)
-        })
 
-        val renseignedAdresse: Button = findViewById(R.id.btnRenseigneAdresse)
-        renseignedAdresse.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, RenseigneAdresseActivity::class.java)
-            startActivity(intent)
-        })
-
-        val nosMagasin: Button = findViewById(R.id.btnListeMagasins)
-        nosMagasin.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, ListeMagasin::class.java)
-            startActivity(intent)
-        })
 
     }
 
