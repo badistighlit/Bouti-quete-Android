@@ -11,20 +11,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.view.ClickListeners.OnMagasinClickListener
+import com.example.myapplication.view.Extensions.setupBottomNavigation
 import com.example.myapplication.view.adapters.MagasinAdapter
 
 import com.example.myapplication.viewmodel.ListeMagasinViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListeMagasin : AppCompatActivity() {
     private val listeMagasinviewModel: ListeMagasinViewModel by viewModel()
+    lateinit var bottomNavigationView: BottomNavigationView;
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liste_magasin)
         val backReturn: Button = findViewById(R.id.backReturn)
         val searchItem: SearchView = findViewById(R.id.SearchItem)
-
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.setupBottomNavigation(this)
 
         val magasins = listeMagasinviewModel.getListeMagasins()
         val mappedmagasins =magasins.associateWith { magasin ->

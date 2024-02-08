@@ -42,14 +42,14 @@
 
         <TextView
             android:id="@+id/nom"
-            android:layout_width="366dp"
-            android:layout_height="51dp"
+            android:layout_width="360dp"
+            android:layout_height="84dp"
             android:layout_below="@id/Photo"
             android:layout_marginTop="16dp"
             android:text="Nom du Produit"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="#333333" />
+            android:textColor="#333333"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/prix"
