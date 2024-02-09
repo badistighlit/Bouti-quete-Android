@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -29,8 +30,9 @@
             android:name=".view.ListeMagasinProche"
             android:exported="false" />
         <activity
-            android:name=".RenseigneAdresseActivity"
+            android:name=".view.RenseigneAdresseActivity"
             android:exported="false" />
+
         <activity
             android:name=".view.ListeMagasin"
             android:exported="false" />

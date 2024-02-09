@@ -28,6 +28,16 @@ data class LocalisationData(
     val longitude: Double
 )
 
+
+data class LocalisationResponseObjectAdress(
+    @SerializedName("results")
+    val results: List<LocalisationPosition>,
+
+    @SerializedName("status")
+    val status: String
+)
+
+
 data class LocalisationPosition(
     @SerializedName("formatted_address")
     val position: String

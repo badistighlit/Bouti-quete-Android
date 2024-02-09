@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.db.AppDatabase
 import com.example.myapplication.repositories.DatabaseRepository
-import com.example.myapplication.view.Extensions.setupBottomNavigation
+import com.example.myapplication.view.Extentions.setupBottomNavigation
 import com.example.myapplication.viewmodel.ApiCalcule
 import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
 import com.example.myapplication.viewmodel.ListeMagasinViewModel
@@ -31,18 +31,14 @@ class MainActivity : AppCompatActivity() {
             setTheme(R.style.Base_Theme_MyApplication);
         }
 
-        val databaseRepository: DatabaseRepository by inject();
-        databaseRepository.build();
+        val databaseRepository: DatabaseRepository by inject()
+        databaseRepository.build()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setupBottomNavigation(this)
-
-
-
-
 
     }
     private fun isDarkModeEnabled(): Boolean {

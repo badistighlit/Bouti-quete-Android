@@ -1,27 +1,20 @@
 package com.example.myapplication.viewmodel
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.model.magasin_model.Magasin
+import com.example.myapplication.model.magasin_model.Adresse
 import com.example.myapplication.network.LocalisationData
 import com.example.myapplication.network.LocalisationMapper
-import com.example.myapplication.network.observeOnce
+import com.example.myapplication.network.LocalisationPosition
 import com.example.myapplication.repositories.DatabaseRepository
 import com.example.myapplication.repositories.LocalisationRepository
 import org.koin.java.KoinJavaComponent
 import kotlin.coroutines.CoroutineContext
-import kotlin.math.atan2
-import kotlin.math.cos
-import kotlin.math.pow
-import kotlin.math.round
-import kotlin.math.sin
-import kotlin.math.sqrt
 
 //import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
- class ListeMagasinProcheViewModel(private val repository: LocalisationRepository, private val mapper: LocalisationMapper)
+class ListeMagasinProcheViewModel(private val repository: LocalisationRepository, private val mapper: LocalisationMapper)
     : ViewModel() {
 
     val databaseRepository: DatabaseRepository by KoinJavaComponent.inject(DatabaseRepository::class.java);
@@ -35,22 +28,22 @@ import kotlin.math.sqrt
         get() = viewModelScope.coroutineContext
 
     private val _localisationData = MutableLiveData<LocalisationData>()
+    private val _positionData = MutableLiveData<Adresse>()
     val localisationData: MutableLiveData<LocalisationData> get() = _localisationData
+    val positionData: MutableLiveData<Adresse> get() = _positionData
+
 
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
 
     fun getLatLong(address: String) {
-        val reponse = mapper.mapping(repository.getLatLong(address).blockingFirst())
-        Log.v("testest","$reponse")
-        _localisationData.postValue(reponse)
-
+        val response = mapper.mapping(repository.getLatLong(address).blockingFirst())
+        _localisationData.postValue(response)
     }
 
-
-
-
-
-
+    fun getAdress(coordinate: Pair<Double, Double>) {
+        val response = mapper.mappingAdress(repository.getAddress(coordinate).blockingFirst())
+        _positionData.postValue(response)
+    }
 
 }

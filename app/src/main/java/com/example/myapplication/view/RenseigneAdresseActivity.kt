@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,13 +6,26 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.view.Extensions.setupBottomNavigation
-import com.example.myapplication.view.ListeMagasinProche
-import com.example.myapplication.view.MainActivity
+import com.example.myapplication.view.Extentions.setupBottomNavigation
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import RenseigneAdresseViewModel
+import androidx.lifecycle.lifecycleScope
+import com.example.myapplication.R
+import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class RenseigneAdresseActivity : AppCompatActivity() {
-    lateinit var bottomNavigationView: BottomNavigationView;
+
+    lateinit var bottomNavigationView: BottomNavigationView
+    private val listeMagasinProcheViewModel: ListeMagasinProcheViewModel by viewModel()
+    private val RenseigneAdresseViewModel: RenseigneAdresseViewModel by lazy { RenseigneAdresseViewModel(listeMagasinProcheViewModel, this) }
+    private lateinit var rueEditText: EditText
+    private lateinit var villeEditText: EditText
+    private lateinit var postalCodeEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,12 +35,15 @@ class RenseigneAdresseActivity : AppCompatActivity() {
 
         val nomEditText: EditText = findViewById(R.id.nom)
         val prenomEditText: EditText = findViewById(R.id.prenom)
-        val rueEditText: EditText = findViewById(R.id.rue)
-        val villeEditText: EditText = findViewById(R.id.ville)
-        val postalCodeEditText: EditText = findViewById(R.id.postalCode)
         val validerButton: Button = findViewById(R.id.valider)
         val backReturn: Button = findViewById(R.id.backReturn)
         val getLocalisation: Button = findViewById(R.id.getLocalisation)
+
+        var fusedLocationProviderClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+        rueEditText = findViewById(R.id.rue)
+        villeEditText = findViewById(R.id.ville)
+        postalCodeEditText = findViewById(R.id.postalCode)
 
         validerButton.setOnClickListener {
             val nom = nomEditText.text.toString()
@@ -48,13 +64,21 @@ class RenseigneAdresseActivity : AppCompatActivity() {
         }
 
         getLocalisation.setOnClickListener {
-
+            lifecycleScope.launch {
+                val position = RenseigneAdresseViewModel.getLocationPosition(fusedLocationProviderClient, this)
+                if (position != null) {
+                    rueEditText.setText(position.rue)
+                    villeEditText.setText(position.ville)
+                    postalCodeEditText.setText(position.codePostal)
+                }
+            }
         }
+
 
         backReturn.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent);
-            finish();
+            finish()
         })
 
     }
