@@ -37,9 +37,9 @@ class ListeMagasin : AppCompatActivity() {
 
         val adapter = MagasinAdapter(mappedmagasins, object : OnMagasinClickListener {
             override fun onMagasinClick(magasin: Magasin) {
-                // Action à effectuer lors du clic sur un magasin
+
                 val intent = Intent(this@ListeMagasin, ListeProduit::class.java)
-                // Ajoutez des données supplémentaires à l'intent si nécessaire
+
                 startActivity(intent)
             }
         })

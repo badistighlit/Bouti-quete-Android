@@ -9,12 +9,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.model.magasin_model.Magasin
 import com.example.myapplication.model.magasin_model.Produit
 import com.example.myapplication.view.ClickListeners.OnProduitClickListener
 import com.example.myapplication.view.Extensions.setupBottomNavigation
 import com.example.myapplication.view.adapters.ProduitAdapter
-import com.example.myapplication.viewmodel.ListeMagasinProcheViewModel
 import com.example.myapplication.viewmodel.ListeProduitViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel

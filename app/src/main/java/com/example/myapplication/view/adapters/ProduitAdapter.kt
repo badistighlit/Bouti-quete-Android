@@ -32,9 +32,9 @@ class ProduitAdapter(
     }
     fun filterList(filterText: String) {
         produits = if (filterText.isEmpty()) {
-            produits // Aucun filtre, afficher la liste complète
+            produits
         } else {
-            // Filtrer les magasins dont le nom contient le texte de filtrage
+            // Filtre filtrage
             produits.filter { produit->
                 produit.nom.contains(filterText, ignoreCase = true)
             }

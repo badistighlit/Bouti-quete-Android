@@ -26,7 +26,7 @@ val magasins =databaseRepository.getMagasins();
     suspend fun getPlusProche(adresse: String): Map<Magasin, Double> {
         return suspendCoroutine { continuation ->
             listeMagasinProcheViewModel.localisationData.observeOnce { localisationData ->
-                localisationData?.let {
+                localisationData?.let { it ->
                     val latitude = it.latitude
                     val longitude = it.longitude
 
@@ -54,7 +54,7 @@ val magasins =databaseRepository.getMagasins();
         val a = sin(dLat / 2).pow(2) + cos(rLat1) * cos(rLat2) * sin(dLon / 2).pow(2)
         val c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
-        var distance = R * c
+        val distance = R * c
 
         return (round(distance * 100) / 100)
     }

@@ -56,10 +56,10 @@ class MagasinAdapter(
                 "${magasin.adresse.rue}, ${magasin.adresse.ville}, ${magasin.adresse.codePostal}"
             distanceTextView.text = "Distance: $distance km"
 
-            // Charger l'image correspondante (vous devrez remplacer R.drawable.default_image par votre propre image)
+
             imageView.setImageResource(R.drawable.magasin)
 
-            // Gérer le clic sur l'élément de la liste
+
             itemView.setOnClickListener {
                 onMagasinClickListener.onMagasinClick(magasin)
             }

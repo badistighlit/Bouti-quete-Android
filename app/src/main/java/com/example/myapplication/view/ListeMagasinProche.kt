@@ -37,10 +37,9 @@ class ListeMagasinProche : AppCompatActivity() {
         val rue = intent.getStringExtra("RUE")
         val ville = intent.getStringExtra("VILLE")
         val postalCode = intent.getStringExtra("CODE POSTAL")
-        val adresse = rue + ville + postalCode
+        val adresse = "$rue $ville $postalCode"
 
         val textView = findViewById<TextView>(R.id.Salutation)
-        val textView2 = findViewById<TextView>(R.id.textView)
         textView.text = "BONJOUR " + nom + " " + prenom + " votre adresse est la suivante : \n" + adresse +
                 "\nVoici la liste des magasins les plus proche de chez vous"
 

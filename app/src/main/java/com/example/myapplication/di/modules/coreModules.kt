@@ -1,7 +1,6 @@
 package com.example.myapplication.di.modules
 
-import androidx.lifecycle.ViewModel
-import com.example.myapplication.network.LocalisationApi
+
 import com.example.myapplication.network.LocalisationMapper
 import com.example.myapplication.repositories.DatabaseRepository
 import com.example.myapplication.repositories.LocalisationRepository
@@ -14,7 +13,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val coreModules = module {
-    single { LocalisationMapper() } // Ajoutez cette ligne pour définir le LocalisationMapper comme un bean Koin
+    single { LocalisationMapper() }
     viewModel { ListeMagasinProcheViewModel(get(), get()) }
     viewModel { ListeProduitViewModel() }
     viewModel {ListeMagasinViewModel()}
@@ -27,8 +26,6 @@ val coreModules = module {
 
 }
 
-fun createLocalisationApi(): LocalisationApi {
-    return RetrofitClient.create()
-}
+
 
 val appModules = listOf(coreModules, databaseModule)

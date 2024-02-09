@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.view.Extensions.setupBottomNavigation
 import com.example.myapplication.view.ListeMagasinProche
