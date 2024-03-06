@@ -49,7 +49,9 @@ class ListeMagasinProche : AppCompatActivity() {
               val adapter = MagasinAdapter(magasins, object : OnMagasinClickListener {
                   override fun onMagasinClick(magasin: Magasin) {
                       // Action à effectuer lors du clic sur un magasin
-                      val intent = Intent(this@ListeMagasinProche, ListeProduit::class.java)
+                      val intent = Intent(this@ListeMagasinProche, ListeProduit::class.java).apply {
+                          putExtra("idMagasin", magasin.id)
+                      }
 
                       startActivity(intent)
                   }

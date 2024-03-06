@@ -13,11 +13,11 @@ class ListeMagasinViewModel : ViewModel()  {
         databaseRepository.buildIfNeeded()
     }
 
-    val magasins =databaseRepository.getMagasins();
+    val magasins =databaseRepository.getMagasins()
 
     fun getListeMagasins(): List<Magasin> {
         Log.v("popo","pipi")
-        return this.magasins;
+        return this.magasins
     }
 
 
