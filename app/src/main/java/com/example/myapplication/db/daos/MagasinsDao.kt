@@ -27,9 +27,11 @@ interface MagasinsDao {
     }
 
     @Transaction
-    fun insertMagasinWithAdress(magasins: magasinsEntity, adress: adressEntity) {
+    fun insertMagasinWithAdress(magasins: magasinsEntity, adress: adressEntity): Int {
         val adressId = insertAdress(adress)
         magasins.adressId = adressId.toInt()
         insertNewMagasins(magasins)
+
+        return magasins.magasinId
     }
 }
