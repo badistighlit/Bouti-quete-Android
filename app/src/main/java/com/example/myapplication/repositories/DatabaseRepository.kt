@@ -2,13 +2,13 @@ package com.example.myapplication.repositories
 
 
 import com.example.myapplication.db.AppDatabase
-import com.example.myapplication.db.daos.MagasinAdresse
 import com.example.myapplication.db.entities.ProduitEntity
 import com.example.myapplication.db.entities.adressEntity
 import com.example.myapplication.db.entities.MagasinProduitEntity
 import com.example.myapplication.db.entities.magasinsEntity
 import com.example.myapplication.model.magasin_model.Adresse
 import com.example.myapplication.model.magasin_model.Magasin
+import com.example.myapplication.model.magasin_model.MagasinAdresse
 import com.example.myapplication.model.magasin_model.Produit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
