@@ -18,7 +18,7 @@ class ApiCalcule(private val listeMagasinProcheViewModel: ListeMagasinProcheView
  val databaseRepository: DatabaseRepository by inject(DatabaseRepository::class.java)
 
     init {
-        databaseRepository.build()
+        databaseRepository.buildIfNeeded()
     }
 
 val magasins =databaseRepository.getMagasins();

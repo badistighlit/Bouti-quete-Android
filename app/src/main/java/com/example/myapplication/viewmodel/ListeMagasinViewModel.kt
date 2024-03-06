@@ -10,7 +10,7 @@ class ListeMagasinViewModel : ViewModel()  {
     val databaseRepository: DatabaseRepository by KoinJavaComponent.inject(DatabaseRepository::class.java)
 
     init {
-        databaseRepository.build()
+        databaseRepository.buildIfNeeded()
     }
 
     val magasins =databaseRepository.getMagasins();

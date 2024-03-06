@@ -18,7 +18,17 @@ class DatabaseRepository(private val db: AppDatabase) {
     lateinit var listMagasin: List<Magasin>
     lateinit var listProduits: List<Produit>
 
-    fun build() {
+    fun buildIfNeeded() {
+        runBlocking {
+            launch(Dispatchers.IO) {
+                if (db.MagasinsDao().getAllMagasins() == null) {
+                    build()
+                }
+            }
+        }
+    }
+
+    private fun build() {
             runBlocking {
                 launch(Dispatchers.IO) {
                     db.clearAllTables()
@@ -30,14 +40,13 @@ class DatabaseRepository(private val db: AppDatabase) {
                     listProduits = convertEntitiesToProduct(db.ProduitDao().getAllproduits())
 
 
-                    val produitEntities: MutableList<ProduitEntity> = mutableListOf();
                     // Insérer les produits pour le magasin
                     listMagasin = convertToListMagasin(db.MagasinsAdressDao().getAll())
                     val entities = convertMagasinToEntities(listMagasin())
                     var i: Int = 0
                     for ((magasinEntity, adressEntity) in entities) {
                         val magasinId = db.MagasinsDao().insertMagasinWithAdress(magasinEntity, adressEntity)
-                        val selectedProducts = listProduits.shuffled().take((0..5).random())
+                        val selectedProducts = listProduits.shuffled().take((5..10).random())
                         for (produit in selectedProducts) {
                             val produitMagasinEntity = MagasinProduitEntity(
                                 i,
@@ -53,7 +62,34 @@ class DatabaseRepository(private val db: AppDatabase) {
     }
 
     fun getMagasins():List<Magasin>{
-        return this.listMagasin;
+        lateinit var listeMagasins: List<Magasin>
+        runBlocking {
+            launch(Dispatchers.IO) {
+                listeMagasins = convertToListMagasin(db.MagasinsAdressDao().getAll())
+            }
+        }
+        return listeMagasins
+    }
+
+    fun getProduits(): List<Produit>{
+        return this.listProduits
+    }
+
+    fun getProduitsByMagasinId(id: Int): List<Produit>{
+        lateinit var listProduitForMagasin: List<Produit>
+        runBlocking {
+            launch(Dispatchers.IO) {
+                listProduitForMagasin = convertEntitiesToProduct(db.MagasinProduitDao().getProductsForMagasin(id))
+            }
+        }
+        return listProduitForMagasin
+    }
+
+    fun getMagasinsByProduitId(id: Int): List<Magasin>{
+        val magasinsFromDao: List<magasinsEntity> = db.MagasinProduitDao().getMagasinsForProduct(id)
+        val magasinIdsFromDao = magasinsFromDao.map { it.magasinId }
+
+        return listMagasin.filter { magasin -> magasinIdsFromDao.contains(magasin.id) }
     }
 
 
@@ -160,6 +196,16 @@ class DatabaseRepository(private val db: AppDatabase) {
             Produit(19, "Pot de miel artisanal 500g", 5.99, "Pot de miel artisanal de 500g, récolté avec soin pour une saveur unique."),
             Produit(20, "Dragon Ball Fighter Z", 20.0, "Jeu vidéo de combat épique avec des personnages de Dragon Ball.")
         )
+    }
+
+    fun getAllProducts(): List<Produit> {
+        lateinit var truc: List<ProduitEntity>
+        runBlocking {
+            launch(Dispatchers.IO) {
+                truc = db.ProduitDao().getAllproduits()
+            }
+        }
+        return convertEntitiesToProduct(truc)
     }
 
 }

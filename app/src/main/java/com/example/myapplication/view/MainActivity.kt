@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val databaseRepository: DatabaseRepository by inject()
-        databaseRepository.build()
+        databaseRepository.buildIfNeeded()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

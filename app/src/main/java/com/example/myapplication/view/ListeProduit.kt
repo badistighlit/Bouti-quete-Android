@@ -19,7 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListeProduit : AppCompatActivity() {
     private val listeProduitViewModel: ListeProduitViewModel by viewModel()
-    lateinit var bottomNavigationView: BottomNavigationView;
+    lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_produit)
@@ -27,21 +27,39 @@ class ListeProduit : AppCompatActivity() {
         val searchItem: SearchView = findViewById(R.id.SearchItem)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.setupBottomNavigation(this)
+        val idMagasin = intent.getIntExtra("idMagasin", -20)
+        val adapter: ProduitAdapter
+        if (idMagasin != -20) {
+            adapter = ProduitAdapter(listeProduitViewModel.getListProduitsForMagasin(idMagasin), object :
+                OnProduitClickListener {
+                override fun OnProduitClick(produit: Produit) {
+                    // Action à effectuer lors du clic sur un magasin
+                    val intent = Intent(this@ListeProduit, DetailsProduit::class.java).apply {
+                        putExtra("nom", produit.nom)
+                        putExtra("prix",produit.prix.toString())
+                        putExtra("details",produit.description)
+                    }
 
-
-        val adapter = ProduitAdapter(listeProduitViewModel.getListeProduits(), object :
-            OnProduitClickListener {
-            override fun OnProduitClick(produit: Produit) {
-                // Action à effectuer lors du clic sur un magasin
-                val intent = Intent(this@ListeProduit, DetailsProduit::class.java).apply {
-                    putExtra("nom", produit.nom)
-                    putExtra("prix",produit.prix.toString())
-                    putExtra("details",produit.description)
+                    startActivity(intent)
                 }
+            })
+        } else {
+            adapter = ProduitAdapter(listeProduitViewModel.getListeProduits(), object :
+                OnProduitClickListener {
+                override fun OnProduitClick(produit: Produit) {
+                    // Action à effectuer lors du clic sur un magasin
+                    val intent = Intent(this@ListeProduit, DetailsProduit::class.java).apply {
+                        putExtra("nom", produit.nom)
+                        putExtra("prix",produit.prix.toString())
+                        putExtra("details",produit.description)
+                    }
 
-                startActivity(intent)
-            }
-        })
+                    startActivity(intent)
+                }
+            })
+        }
+
+
         val recyclerView: RecyclerView = findViewById(R.id.ListerecyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this@ListeProduit)

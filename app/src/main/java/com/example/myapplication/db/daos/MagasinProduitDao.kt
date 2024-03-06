@@ -17,12 +17,12 @@ interface MagasinProduitDao {
     @Query("SELECT magasins_entity.* FROM magasins_entity " +
             "INNER JOIN magasins_produit_entity ON magasins_entity.magasinId = magasins_produit_entity.magasinId " +
             "WHERE magasins_produit_entity.produitId = :produitId")
-    fun getMagasinsForProduct(produitId: Long): List<magasinsEntity>
+    fun getMagasinsForProduct(produitId: Int): List<magasinsEntity>
 
     @Query("SELECT produit_entity.* FROM produit_entity " +
             "INNER JOIN magasins_produit_entity ON produit_entity.produitId = magasins_produit_entity.produitId " +
             "WHERE magasins_produit_entity.magasinId = :magasinId")
-    fun getProductsForMagasin(magasinId: Long): List<ProduitEntity>
+    fun getProductsForMagasin(magasinId: Int): List<ProduitEntity>
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

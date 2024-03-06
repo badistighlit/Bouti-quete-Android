@@ -19,7 +19,7 @@ class ListeMagasinProcheViewModel(private val repository: LocalisationRepository
 
     val databaseRepository: DatabaseRepository by KoinJavaComponent.inject(DatabaseRepository::class.java);
     init {
-        databaseRepository.build()
+        databaseRepository.buildIfNeeded()
 
     }
     val magasins =databaseRepository.getMagasins();
