@@ -28,7 +28,7 @@ Kotlin
 # Installation
 Clonez le dépôt :
 
-    git clone https://gitlab.com/cmehadji27/android-search-your-produc
+    https://github.com/badistighlit/Bouti-quete-Android
 
 - Ouvrez le projet dans Android Studio.
 - Connectez votre appareil Android ou lancez un émulateur.
